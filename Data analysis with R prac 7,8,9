@@ -1,0 +1,56 @@
+#practical 7
+Aim:-Performing one-way ANOVA using aov() (R). 
+# Install required package
+install.packages("readxl")
+# Load library
+library(readxl)
+# Read the Excel dataset
+my_data <- read_excel("C:/Users/mvluc/Downloads/flower_dataset.xlsx")
+# Display dataset
+print(my_data)
+# One-Way ANOVA
+# Testing whether mean height differs by species
+anova_result <- aov(height_cm ~ species, data = my_data)
+# Display ANOVA summary
+summary(anova_result)
+
+
+#practical 8
+Aim:- Performing two-way ANOVA using  aov() (R). 
+# Install required package
+install.packages("readxl")
+# Load library
+library(readxl)
+# Read the Excel dataset
+iris <- read_excel("C:/Users/mvluc/Downloads/iris.xlsx")
+# Display dataset
+print(iris)
+# Convert petal.width to factor (required for two-way ANOVA)
+iris$petal.width <- as.factor(iris$petal.width)
+# Two-Way ANOVA
+two_way_anova <- aov(sepal.length ~ variety * petal.width, data = iris)
+# Display ANOVA summary
+summary(two_way_anova)
+
+
+#Practical 9
+Aim:-Conducting Chi-square tests using chisq.test() (R)  
+# Install required package
+install.packages("readxl")
+# Load library
+library(readxl)
+# Read the Excel dataset
+BostonHousing <- read_excel("C:/Users/mvluc/Downloads/BostonHousing.xlsx")
+# View the dataset
+View(BostonHousing)
+# Convert variables to categorical (factor)
+BostonHousing$chas <- as.factor(BostonHousing$chas)
+BostonHousing$rad <- as.factor(BostonHousing$rad)
+# Create contingency table
+chi_table <- table(BostonHousing$chas, BostonHousing$rad)
+# Display table
+print(chi_table)
+# Perform Chi-Square Test
+chi_result <- chisq.test(chi_table)
+# Display result
+print(chi_result)
